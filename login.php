@@ -99,7 +99,7 @@ if(isset($_POST['Enviar'])){
 		<link rel="shortcut icon" type="image/x-icon" href="assets/images/brand/favicon.ico" />
 
 		<!-- Title -->
-		<title>Zafiro UrBANET</title>
+		<title>HOTEL MAR DE SUEÑOS</title>
 
 		<!--Bootstrap.min css-->
 		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">

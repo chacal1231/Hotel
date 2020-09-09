@@ -11,6 +11,7 @@
 					<th>Habitacion</th>
 					<th>Tipo</th>
 					<th>Camas</th>
+					<th>Precio</th>
 					<th>Estado</th>
 					<th>Accion</th>
 				</tr>
@@ -23,19 +24,20 @@
 	function CrearPlan() {
 		Swal.fire({
 			title: 'Nueva Habitacion',
-			html: '<input id="NombreHabitacion" type="text" placeholder="Nombre habitación" class="swal2-input"><br><select class="swal2-input" Id="TipoHabitacion"><option value="">Tipo de habitación</option><option>Pequeña</option><option>Mediana</option><option>Grande</option></select><br><select class="swal2-input" id="CamasHabitacion"><option value="">Número de camas</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>',
+			html: '<input id="NombreHabitacion" type="text" placeholder="Nombre habitación" class="swal2-input"><br><select class="swal2-input" Id="TipoHabitacion"><option value="">Tipo de habitación</option><option>Habitación cama doble</option><option>Habitación sencilla cama doble.</option><option>Presidencial</option></select><br><select class="swal2-input" id="CamasHabitacion"><option value="">Número de camas</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><br><input id="PrecioHabitacion" type="number" placeholder="Precio de habitación x día" class="swal2-input">',
 			customClass: 'swal2-overflow',
 		}).then(function(result) {
 			if(result.value){
 				let NombreHabitacion = $('#NombreHabitacion').val();
 				let TipoHabitacion = $('#TipoHabitacion').val();
 				let CamasHabitacion = $('#CamasHabitacion').val();
-				if(NombreHabitacion!=="" || TipoHabitacion!=="" || CamasHabitacion!==""){
+				let PrecioHabitacion = $('#PrecioHabitacion').val();
+				if(NombreHabitacion!=="" || TipoHabitacion!=="" || CamasHabitacion!=="" || PrecioHabitacion!==""){
 					Swal.showLoading()
 					$.ajax({
 						type:'POST',
 						url:'Api/CrearHabitaciones.php',
-						data:{'NombreHabitacion':NombreHabitacion,'TipoHabitacion':TipoHabitacion, 'CamasHabitacion':CamasHabitacion},
+						data:{'NombreHabitacion':NombreHabitacion,'TipoHabitacion':TipoHabitacion, 'CamasHabitacion':CamasHabitacion, 'PrecioHabitacion':PrecioHabitacion},
 						dataType: 'json',
 						success:function(Response){
 							Swal.close();
@@ -77,6 +79,7 @@
 		{ mData: 'NombreHabitacion' },
 		{ mData: 'TipoHabitacion' },
 		{ mData: 'CamasHabitacion' },
+		{ mData: 'Precio' },
 		{ mData: 'Estado' },
 		{ mData: 'Acciones' }
 		],

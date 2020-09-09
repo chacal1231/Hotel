@@ -11,7 +11,7 @@ foreach ($QueryTabla as $RowTabla => $value) {
 	}else{
 		$Estado = '<button class="btn btn-sm btn-danger" type="button">Ocupada</button>'; 
 	}
-	$Data[] = array('NombreHabitacion'=>$value['Nombre'],'TipoHabitacion'=>$value['Tipo'],'CamasHabitacion'=>$value['Camas'],'Estado'=>$Estado,'FechaCreacion'=>$value['FechaCreacion'],'Acciones'=>'<button class="btn btn-sm btn-success Modificar" type="button">Modificar</button>');
+	$Data[] = array('NombreHabitacion'=>$value['Nombre'],'TipoHabitacion'=>$value['Tipo'],'CamasHabitacion'=>$value['Camas'],'Estado'=>$Estado,'FechaCreacion'=>$value['FechaCreacion'],'Acciones'=>'<button class="btn btn-sm btn-success Modificar" type="button">Modificar</button>','Precio'=>$value['Precio']);
 }
 /*Devuelvo lo que necesito a DataTables*/
 $results = array(

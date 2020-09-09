@@ -7,8 +7,9 @@ if(isset($_POST['NombreHabitacion'])){
 	$NombreHabitacion = $link->real_escape_string($_POST['NombreHabitacion']);
 	$TipoHabitacion = $link->real_escape_string($_POST['TipoHabitacion']);
 	$CamasHabitacion = $link->real_escape_string($_POST['CamasHabitacion']);
+	$PrecioHabitacion = $link->real_escape_string($_POST['PrecioHabitacion']);
 	/*Hago el insert*/
-	$link->query("INSERT INTO habitaciones(Nombre,Tipo,Camas,Estado,FechaCreacion) VALUES('".$NombreHabitacion."','".$TipoHabitacion."','".$CamasHabitacion."','Disponible','".date('Y-m-d H:i:s')."')");
+	$link->query("INSERT INTO habitaciones(Nombre,Tipo,Camas,Precio,Estado,FechaCreacion) VALUES('".$NombreHabitacion."','".$TipoHabitacion."','".$CamasHabitacion."','".$PrecioHabitacion."','Disponible','".date('Y-m-d H:i:s')."')");
 	/*Verifico si hay error*/
 	if($link->error){
 		echo json_encode(array('Estado'=>'Error','Error'=>$link->error));
