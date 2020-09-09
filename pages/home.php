@@ -46,21 +46,17 @@
 			</div>
 			<div class="card-body">
 				<div class="row">
-					<div class="col-lg-3 col-sm-6 text-center">
+					<div class="col-lg-4 col-sm-6 text-center">
 						<h5 class="mb-1 text-muted">Hoy</h5>
-						<h4 class=" mt-2 fs-1 mb-3 text-primary mainvalue"> COP</h4>
+						<h4 class=" mt-2 fs-1 mb-3 text-primary mainvalue" id="Hoy"></h4>
 					</div>
-					<div class="col-lg-3 col-sm-6 text-center">
-						<h5 class="mb-1 text-muted">Ayer</h5>
-						<h2 class=" mt-2 fs-1 mb-6 text-secondary mainvalue"> COP</h2>
-					</div>
-					<div class="col-lg-3 col-sm-6 text-center">
+					<div class="col-lg-4 col-sm-6 text-center">
 						<h5 class="mb-1 text-muted">Semana</h5>
-						<h2 class=" mt-2 fs-1 mb-6 text-success mainvalue"> COP</h2>
+						<h2 class=" mt-2 fs-1 mb-6 text-success mainvalue" id="Semana"></h2>
 					</div>
-					<div class="col-lg-3 col-sm-6 text-center">
+					<div class="col-lg-4 col-sm-6 text-center">
 						<h5 class="mb-1 text-muted">Mes</h5>
-						<h2 class=" mt-2 fs-1 mb-6 text-danger mainvalue"> COP</h2>
+						<h2 class=" mt-2 fs-1 mb-6 text-danger mainvalue" id="Mes"></h2>
 					</div>
 				</div>
 			</div>
@@ -76,6 +72,9 @@
 		success:function(Response){
 			$('#Reservas').html(Response.Reservas);
 			$('#Pines').html(Response.Pines);
+			$('#Hoy').html(Response.Dia+" COP");
+			$('#Semana').html(Response.Semanal+" COP");
+			$('#Mes').html(Response.Mensual+" COP");
 		}
 	});
 </script>

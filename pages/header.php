@@ -204,8 +204,9 @@
 											<div class="row">
 												<div class="col-md-12">
 													<h4 class="font-weight-semibold">Hotel</h4>
-													<a href="?view=Reservas" class="slide-item">Nueva reserva</a>
+													<a href="?view=Reservas" class="slide-item">Reservas</a>
 													<a href="?view=Habitaciones" class="slide-item">Habitaciones</a>
+													<a href="?view=Ventas" class="slide-item">Ventas</a>
 												</div>
 											</div>
 										</div>

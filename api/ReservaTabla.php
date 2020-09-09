@@ -3,7 +3,7 @@ include '../inc/conn.php';
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 /*Consulto la información de la tabla*/
-$QueryTabla = $link->query("SELECT * FROM reservas");
+$QueryTabla = $link->query("SELECT * FROM reservas WHERE Estado='Ocupada'");
 $RowTabla = $QueryTabla->fetch_array();
 foreach ($QueryTabla as $RowTabla => $value) {
 	if($value['Estado'] =="Disponible"){
