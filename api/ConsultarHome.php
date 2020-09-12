@@ -1,6 +1,5 @@
 <?php
 include '../inc/conn.php';
-include '../inc/API.php';
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 /*Consulto la información de ventass*/

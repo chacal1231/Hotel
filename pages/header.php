@@ -64,6 +64,7 @@
 
 	<!-- Date Picker css-->
 	<link href="assets/plugins/date-picker/spectrum.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
 
 </head>
 
@@ -206,7 +207,7 @@
 													<h4 class="font-weight-semibold">Hotel</h4>
 													<a href="?view=Reservas" class="slide-item">Reservas</a>
 													<a href="?view=Habitaciones" class="slide-item">Habitaciones</a>
-													<a href="?view=Ventas" class="slide-item">Ventas</a>
+													<a href="#" onclick="Ventas();" class="slide-item">Ventas</a>
 												</div>
 											</div>
 										</div>
@@ -332,6 +333,7 @@
 						<script src="assets/plugins/date-picker/spectrum.js"></script>
 						<script src="assets/plugins/date-picker/jquery-ui.js"></script>
 						<script src="assets/plugins/input-mask/jquery.maskedinput.js"></script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
 
 						<!-- Notifications js -->
 						<script src="assets/plugins/notify/js/rainbow.js"></script>
@@ -344,3 +346,52 @@
 
 						<!-- Custom js-->
 						<script src="assets/js/custom.js"></script>
+
+						<script type="text/javascript">
+							function Ventas(){
+								Swal.fire({
+									title: 'Reporte de ventas',
+									html: '<input id="FechaInicio" placeholder="Fecha inicio" data-date-format="yyyy-mm-dd" class="swal2-input"><br><input id="FechaFin" placeholder="FechaFin" data-date-format="yyyy-mm-dd" class="swal2-input">',
+									customClass: 'swal2-overflow',
+									onOpen: function() {
+										$('#FechaInicio').datepicker({
+											autoclose: true
+										});
+										$('#FechaFin').datepicker({
+											autoclose: true
+										});
+									},
+								}).then(function(result) {
+									if(result.value){
+										let FechaInicio = $('#FechaInicio').val();
+										let FechaFin = $('#FechaFin').val();
+										if(FechaInicio!=="" || FechaFin!==""){
+											Swal.showLoading()
+											$.ajax({
+												type:'POST',
+												url:'Api/ConsultarVentas.php',
+												data:{'FechaInicio': FechaInicio, 'FechaFin':FechaFin},
+												dataType: 'json',
+												success:function(Response){
+													Swal.close();
+													if(Response){
+														Swal.fire({
+															icon: 'success',
+															html: '<table class="table table-striped table-bordered"><thead><th>Fecha Inicio</th><th>Fecha Fin</th><th>Venta</th></thead><tbody><tr><td>'+FechaInicio+'</td><td>'+FechaFin+'</td><td>'+Response.Ventas+' COP</td></tr></tbody></table>',
+															customClass: 'swal2-overflow',
+														})
+													}
+
+												}
+											});
+										}else{
+											Swal.fire({
+												icon: 'error',
+												title: 'Oops...',
+												text: "¡Los campos no deben estar vacios!"
+											})
+										}
+									}
+								});
+							}
+						</script>
