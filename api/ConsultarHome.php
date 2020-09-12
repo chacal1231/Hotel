@@ -3,7 +3,7 @@ include '../inc/conn.php';
 include '../inc/API.php';
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
-/*Consulto la información de ventas*/
+/*Consulto la información de ventass*/
 $VentasDia = $link->query("SELECT SUM(TotalVenta) As Total FROM ventas WHERE DATE(FechaVenta)=DATE(NOW())")->fetch_array()['Total'];
 $VentasSemanales = $link->query("SELECT SUM(TotalVenta) As Total FROM ventas WHERE WEEK(FechaVenta)=WEEK(NOW())")->fetch_array()['Total'];
 $VentasMensuales = $link->query("SELECT SUM(TotalVenta) As Total FROM ventas WHERE MONTH(FechaVenta)=MONTH(NOW())")->fetch_array()['Total'];
