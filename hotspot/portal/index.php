@@ -1,7 +1,7 @@
 <?php
 session_start();
 /* =================Recolección datos POST MIKROTIK=============== */
-if(str_contains($_POST['mac'],":")){
+if(isset($_POST['mac'])){
   $_SESSION['Mac']=$_POST['mac'];
 }else{
   echo "<script>alert('¡Vuelva a conectarse a la red inalambrica!');</script>";
