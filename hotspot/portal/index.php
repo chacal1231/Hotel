@@ -1,5 +1,11 @@
 <?php
-session_start(); 
+session_start();
+/* =================Recolección datos POST MIKROTIK=============== */
+if(str_contains($_POST['mac'],":")){
+  $_SESSION['Mac']=$_POST['mac'];
+}else{
+  echo "<script>alert('¡Vuelva a conectarse a la red inalambrica!');</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -88,11 +94,3 @@ session_start();
     }
   }
 </script>
-<?php
-/* =================Recolección datos POST MIKROTIK=============== */
-if(str_contains($_POST['mac'],":")){
-  $_SESSION['Mac']=$_POST['mac'];
-}else{
-  echo "<script>Error();</script>";
-}
-?>
