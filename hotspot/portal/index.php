@@ -4,7 +4,7 @@ session_start();
 if(isset($_POST['mac'])){
   $_SESSION['Mac']=$_POST['mac'];
 }else{
-  echo "<script>alert('¡Vuelva a conectarse a la red inalambrica!');</script>";
+  echo "<script>alert('¡ERROR ERROR,Vuelva a conectarse a la red inalambrica!');</script>";
 }
 ?>
 <!DOCTYPE html>
