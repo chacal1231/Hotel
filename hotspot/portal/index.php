@@ -38,7 +38,7 @@ session_start();
   /*Funcion Login*/
   function Login(){
     let Pin = $('#Pin').val();
-    let Mac = "<?php if(isset($_POST['Mac'])){echo $_POST['Mac'];}else{echo "NA";} ?>";
+    let Mac = "<?php if(isset($_SESSION['Mac'])){echo $_SESSION['Mac'];}else{echo "NA";} ?>";
     if(Pin!==""){
       Swal.showLoading()
       $.ajax({
@@ -90,9 +90,9 @@ session_start();
 </script>
 <?php
 /* =================Recolección datos POST MIKROTIK=============== */
-if(isset($_POST['mac'])){
+if(str_contains($_POST['mac'],":")){
   $_SESSION['Mac']=$_POST['mac'];
-}elseif(empty($_POST['Mac'])){
-  echo "<script>window.location.reload(true);</script>";
+}else{
+  echo "<script>Error();</script>";
 }
 ?>
