@@ -11,7 +11,7 @@ $API = new RouterosAPI();
 $API->debug = false;
 $API->connect($RowCROS['Ip'], $RowCROS['Usuario'], $RowCROS['Pass'], $RowCROS['Puerto']);
 /*Verifico el post*/
-if (isset($_POST['Pin'])) {
+if (isset($_POST['Pin']) && isset($_POST['Mac'])) {
 	$Pin = $link->real_escape_string($_POST['Pin']);
 	$Mac = $link->real_escape_string($_POST['Mac']);
 	/*Verifico Si el pin Existe*/
